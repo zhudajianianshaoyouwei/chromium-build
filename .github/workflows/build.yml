@@ -24,7 +24,7 @@ jobs:
         run: |
           sudo apt install git re2c ninja-build generate-ninja -y
           sudo git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-          sudo export PATH="$PATH:${HOME}/depot_tools"
+          sudo echo export PATH="$PATH:${HOME}/depot_tools" >> ~/.bashrc
           sudo source ~/.bashrc
 
       # Runs a set of commands using the runners shell

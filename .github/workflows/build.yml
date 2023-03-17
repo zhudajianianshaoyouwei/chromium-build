@@ -41,5 +41,5 @@ jobs:
         uses: actions/upload-artifact@2
         with: 
           name: Build
-          path: ./*
+          path: ./chromium/out/Default/*
           

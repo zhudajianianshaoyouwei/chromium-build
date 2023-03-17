@@ -29,7 +29,7 @@ jobs:
       - name: Chromium
         run: |
           sudo mkdir ~/chromium && cd ~/chromium
-          sudo fetch --nohooks chromium
+          sudo ../depot_tools/fetch.sh --nohooks chromium
           cd src
           sudo ./build/install-build-deps.sh
           sudo ../../depots_tools/gclient.sh runhooks

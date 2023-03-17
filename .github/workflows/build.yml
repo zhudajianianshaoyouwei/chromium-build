@@ -24,7 +24,6 @@ jobs:
         run: |
           sudo apt install git re2c ninja-build generate-ninja -y
           sudo git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-          sudo export PATH="$PATH:${HOME}/depot_tools"
 
       # Runs a set of commands using the runners shell
       - name: Chromium
@@ -33,7 +32,7 @@ jobs:
           sudo fetch --nohooks chromium
           cd src
           sudo ./build/install-build-deps.sh
-          sudo gclient runhooks
+          sudo ../../depots_tools/gclient.sh runhooks
           gn gen out/Default
           autoninja -C out/Default chrome
       - name: Upload

@@ -22,18 +22,18 @@ jobs:
       # Runs a single command using the runners shell
       - name: GIT
         run: |
-          sudo apt install git re2c ninja-build generate-ninja -y
+          sudo apt install git re2c ninja-build generate-ninja python -y
           sudo git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 
       # Runs a set of commands using the runners shell
       - name: Chromium
         run: |
           sudo mkdir ~/chromium && cd ~/chromium
-          sudo ../depot_tools/fetch.sh --nohooks chromium
+          sudo ../depot_tools/fetch.py --nohooks chromium
           cd src
           sudo ./build/install-build-deps.sh
-          sudo ../../depots_tools/gclient.sh runhooks
-          gn gen out/Default
+          sudo ../../depots_tools/gclient.py runhooks
+          sudo ../../depots_tools/gn.py gen out/Default
           autoninja -C out/Default chrome
       - name: Upload
         uses: actions/upload-artifact@v3
